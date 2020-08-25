@@ -1,0 +1,26 @@
+.cardStyles {
+    min-width: 100%!important;
+    padding: 16px;
+    background: #fff;
+}
+
+.sethead h4 {
+    margin: 0px;
+    background-color: #eff6fc;
+    padding: 13px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btprim{
+    float: right;
+    margin-top:20px;
+}
+
+.datalist{
+    margin-top:10px;
+}
+
+.bread{
+    margin-top: 18px!important;
+}

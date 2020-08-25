@@ -1,0 +1,27 @@
+.breadmain{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+}
+
+.prim{
+    background-color: #0078d4;
+    color: #FFE;
+    margin-right: 7px;
+    border: 1px solid #d2d0ce99;
+}
+
+.dang{
+    color:#fff;
+    background-color: #ed5249;
+    margin-right: 7px;
+    border: 1px solid #d2d0ce99;
+}
+
+.defa{
+    color:#000; 
+    margin-right: 7px;
+    background-color: #fff;
+    border: 1px solid #d2d0ce99;
+}

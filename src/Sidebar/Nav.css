@@ -1,0 +1,47 @@
+.leftwrp{
+    height: 500px;
+}
+
+.leftwrp ul li {
+    margin-top: 2px;
+    padding: 8px;
+}
+
+.leftwrp ul {
+    margin: 0px;
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 9px;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.leftwrp ul li a {
+    text-decoration: none;
+    /* padding: 20px; */
+}
+
+.m12{
+    padding: 20px;
+    background-color: #fff;
+    border-right:2px solid whitesmoke
+}
+
+.m13{
+    background-color: #faf9f8;
+    margin: 0px;
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+.log-wrp img{
+  width:92%;
+}
+
+.rightwrp {
+    padding: 11px;
+}
+
+.appinner{
+    padding: 17px;
+}
