@@ -1,0 +1,98 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+input{
+    border-color:#ddd !important;
+}
+.logo{
+    width:175px;
+    display: block;
+    text-align: center;
+    margin:auto;
+}
+.editproduct .ms-Grid-col:first-child{
+    text-align: right;
+}
+.editproduct .ms-Grid-col label{
+    margin-right: 15px;
+}
+/* .left_menu{
+    background:#515151;
+} */
+.topbar .right-content{
+    display: block;
+    background: #e4e4e4;
+    height: 50px;
+    border-bottom: 1px solid #c5c5c5;
+}
+.ms-Viewport {
+    margin: 0 1.5%;
+  }
+  .ms-FocusZone {
+    padding: 0;
+  }
+  /* new styles */
+  img.pro_img {
+    width: 30px;
+    max-width: 100%;
+}
+.ms-Checkbox{
+    justify-content: center;
+    align-items: center;
+}
+.pro_wrapper{
+    margin-top:50px;
+}
+.payMethods .ms-Checkbox{
+    margin-bottom: 10px;
+}
+.ProductLinks .ms-Checkbox{
+    justify-content: flex-start;
+}
+[class^="ms-DetailsHeader"],[class^="cellTooltip"]{
+    justify-content: center;
+    align-items: center;
+}
+[class^="ms-DetailsRow-cell"]{
+    text-align: center;
+}
+/* .edit_icon:hover{
+    background-color: #0a6ca0;
+    transition: all 500ms ease;
+} */
+.editproduct .ms-Pivot-text{
+font-size: 13px;
+}
+.editproduct .ms-Button {
+    margin: auto;
+}
+
+
+.cardStyles {
+    min-width: 100%!important;
+    padding: 16px;
+    background: #fff;
+}
+
+.sethead h4 {
+    margin: 0px;
+    background-color: #eff6fc;
+    padding: 13px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btprim{
+    float: right;
+    margin-top:20px;
+}
+
+.datalist{
+    margin-top:10px;
+}
+
+.bread{
+    margin-top: 18px!important;
+}

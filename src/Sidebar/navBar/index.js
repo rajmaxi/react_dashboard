@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Catalog from "../../pages/Catalog";
+import Catagories from "../../pages/Catagories";
 import Dashboard from "../../pages/Dashboard";
 import Filters from "../../pages/Filters";
 import Extension from '../../pages/Extension';
@@ -59,11 +59,11 @@ export default function App() {
               {/* pageNavigation */}
               <div className="rightwrp">
                 <Switch>
-                  <Route path='/'>  
+                  {/* <Route path='/'>  
                     <Dashboard />
-                  </Route>
+                  </Route> */}
                   <Route path='/categories'>
-                    <Catalog />
+                    <Catagories />
                   </Route>
                   <Route path='/products'>
                     <Product />

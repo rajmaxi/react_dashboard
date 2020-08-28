@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, } from "react-router-dom"
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 import { initializeIcons } from "office-ui-fabric-react"
 import { useDispatch, } from 'react-redux';
-import logo from '../../assets/logo_sidebar.png';
+import logo from '../../assets/images/logo_sidebar.png';
 import './style.css';
 import 'office-ui-fabric-react/dist/css/fabric.css';
 
@@ -24,11 +24,11 @@ export default function App(props) {
         const navLinkGroups = [
             {
                 links: [
-                    {
-                        name: <Link to="/">Dashboard</Link>,
-                        Link: '/',
-                        icon: 'ViewDashboard',
-                    },
+                    // {
+                    //     name: <Link to="/">Dashboard</Link>,
+                    //     Link: '/',
+                    //     icon: 'ViewDashboard',
+                    // },
                     {
                         name: <Link to="/categories">Categories</Link>,
                         Link: '/categories',

@@ -1,6 +1,6 @@
 import React from 'react'
 import Breadcrumbs from '../../Breadcrumbs';
-import Catalog from './Categoriestable';
+import Categoriestable from './Categoriestable';
 
 function Catalogbody() {
     return (
@@ -16,7 +16,7 @@ function Catalogbody() {
 
 
                  <div className="catalogtable">
-                       <Catalog/>
+                       <Categoriestable/>
                  </div>
 
 

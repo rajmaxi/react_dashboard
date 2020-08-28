@@ -1,6 +1,6 @@
 import React from 'react';
 import DrawerToggleButton from '../Sidebar/DrawerToggleButton';
-import logo from '../assets/logo.png';
+import logo from '../assets/images/logo.png';
 import './Topbar.css';
 import { MdNotificationsNone } from "react-icons/md";
 import { MdHome } from "react-icons/md"
