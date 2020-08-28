@@ -1,15 +1,17 @@
 const initialState = {
-    isLoading: 1
+    isLoading: 1,
+    breadCrumb: 'Dashboard'
 };
 const logReducer = (state = initialState, action) => {
-    // console.log(action, "action reducer", state);
+    console.log('testaction',action);
 
     switch (action.type) {
 
         case 'NUMBER_Change':
             return {
                 ...state,
-                isLoading: action.payload
+                isLoading: action.payload,
+                breadCrumb: action.breadCrumbs,
             };
         default:
             return state;

@@ -25,15 +25,30 @@
   }
 
   .side-drawer li {
-    margin : 0.5rem 0;
+    margin : 0;
   }
 
   .side-drawer a {
-    color : #521751;
+    color: #1b1b1b;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+  }
+
+  .side-drawer a:focus {
+    outline: 0;
   }
   .side-drawer a:hover,
   .side-drawer a:active {
     color : #fa923f;
   }
+
+  .side-drawer-logo, .side-drawer-menu{
+    margin: 1rem;
+  }
+
+  .side-drawer-logo img {
+    width: 150px;
+    align-items: center;
+    display: flex;
+}

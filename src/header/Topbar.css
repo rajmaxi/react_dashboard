@@ -4,7 +4,7 @@
     left: 0;
     height: 56px;
     width: 100%;
-    background: #521751 
+    background:#0078d4; 
 } 
 
 .toolbar__navigation {
@@ -15,12 +15,35 @@
 }
 
 .toolbar__logo {
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 .toolbar__logo a {
     color: #fff;
     text-decoration: none;
     font-size: 1.5rem;
+}
+
+.toolbar_navigation-items .toolbar_nav_last {
+    border : 0;
+}
+
+.toolbar_navigation-items a {
+    display: flex;
+    border-right: 1px solid #ccc9c9;
+    height: 55px;
+    line-height: 50px;
+    width: 100%;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+
+
+.toolbar__logo img {
+    width: 150px;
+    align-items: center;
+    display: flex;
 }
 
 .spacer {

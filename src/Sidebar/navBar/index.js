@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Catalog from "../pages/Catalog";
-import Dashboard from "../pages/Dashboard";
-import Filters from "../pages/Filters";
-import Extension from '../pages/Extension';
+import Catalog from "../../pages/Catalog";
+import Dashboard from "../../pages/Dashboard";
+import Filters from "../../pages/Filters";
+import Extension from '../../pages/Extension';
+import Product from '../../pages/Product';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Topbar from '../header/Topbar';
-import SideDrawer from './sideDrawer';
-import Backdrop from './backDrop';
-import './Nav.css';
+import Topbar from '../../header/Topbar';
+import SideDrawer from '../sideDrawer';
+import Backdrop from '../backDrop';
+import './style.css';
 import 'office-ui-fabric-react/dist/css/fabric.css';
 import {
   initializeIcons
@@ -58,16 +59,22 @@ export default function App() {
               {/* pageNavigation */}
               <div className="rightwrp">
                 <Switch>
-                  <Route path='/c'>
+                  <Route path='/'>  
+                    <Dashboard />
+                  </Route>
+                  <Route path='/categories'>
                     <Catalog />
                   </Route>
-                  <Route path='/a'>
+                  <Route path='/products'>
+                    <Product />
+                  </Route>
+                  <Route path='/filters'>
                     <Filters />
                   </Route>
-                  <Route path='/b'>
+                  <Route path='/attributes'>
                     <Extension />
                   </Route>
-                  <Route path='/'>
+                  <Route path='/attributesgroup'>
                     <Dashboard />
                   </Route>
                 </Switch>

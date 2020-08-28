@@ -25,3 +25,7 @@
     background-color: #fff;
     border: 1px solid #d2d0ce99;
 }
+
+.MuiLink-underlineHover {
+    text-transform: capitalize;
+}

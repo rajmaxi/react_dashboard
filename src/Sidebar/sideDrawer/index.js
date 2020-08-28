@@ -1,15 +1,15 @@
 import React, { useEffect, } from 'react'
-
-import './style.css';
-
-import 'office-ui-fabric-react/dist/css/fabric.css';
-
 import { BrowserRouter as Router, Switch, Route, Link, } from "react-router-dom";
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { initializeIcons } from "office-ui-fabric-react"
+import { useDispatch, } from 'react-redux';
+import logo from '../../assets/logo_sidebar.png';
+import './style.css';
+import 'office-ui-fabric-react/dist/css/fabric.css';
 
-import { useDispatch,} from 'react-redux';
 
 export default function App(props) {
+    initializeIcons();
     const dispatch = useDispatch();
 
     let drawerClasses = 'side-drawer';
@@ -25,125 +25,39 @@ export default function App(props) {
             {
                 links: [
                     {
-                        name: 'Products',
-                        Link: '',
-                        links: [
-                            {
-                                name: <Link to="/a">Home</Link>,
-                                Link: "'/a'"
-                            },
-                            {
-                                name: <Link to="/b">filter</Link>,
-                                Link: "'/b'"
-                            },
-                            {
-                                name: <Link to="/c">cat</Link>,
-                                Link: "'/c'"
-                            },
-                        ],
+                        name: <Link to="/">Dashboard</Link>,
+                        Link: '/',
+                        icon: 'ViewDashboard',
                     },
                     {
-                        name: 'Catalog',
-                        links: [
-                            {
-                                name: 'Catalog1',
-                                link: '/a'
-                            },
-                            {
-                                name: 'Catalog 2',
-                                link: '/b'
-                            },
-                            {
-                                name: 'Catalog 3',
-                                link: '/c'
-                            },
-                        ],
+                        name: <Link to="/categories">Categories</Link>,
+                        Link: '/categories',
+                        icon: 'ProductCatalog',
                     },
                     {
-                        name: 'Filters',
-                        links: [
-                            {
-                                name: 'Filters',
-                                link: '/a'
-                            },
-                            {
-                                name: 'Filters 2',
-                                link: '/b'
-                            },
-                            {
-                                name: 'Filters 3',
-                                link: '/c'
-                            },
-                        ],
+                        name: <Link to="/products">Products</Link>,
+                        Link: '/products',
+                        icon: 'Product',
                     },
                     {
-                        name: 'Extension',
-                        links: [
-                            {
-                                name: 'Extension 1',
-                                link: '/a'
-                            },
-                            {
-                                name: 'Extension 2',
-                                link: '/b'
-                            },
-                            {
-                                name: 'Extension 3',
-                                link: '/c'
-                            },
-                        ],
+                        name: <Link to="/filters">Filters</Link>,
+                        Link: '/filters',
+                        icon: 'Filter',
                     },
                     {
-                        name: 'Page Builder',
+                        name: 'Attributes',
                         links: [
                             {
-                                name: 'Page Builder 1',
-                                link: '/a'
+                                name: <Link to="/attributes">Attributes</Link>,
+                                Link: '/attributes',
                             },
                             {
-                                name: 'Page Builder 2',
-                                link: '/b'
-                            },
-                            {
-                                name: 'Page Builder 3',
-                                link: '/c'
+                                name: <Link to="/attributesgroup">Attributes Groups</Link>,
+                                Link: '/attributesgroup',
                             },
                         ],
                     },
-                    {
-                        name: 'Design',
-                        links: [
-                            {
-                                name: 'Design 1',
-                                link: '/a'
-                            },
-                            {
-                                name: 'Design 2',
-                                link: '/b'
-                            },
-                            {
-                                name: 'Design 3',
-                                link: '/c'
-                            },
-                        ],
-                    },
-                    {
-                        name: 'Sales',
-                        links: [
-                            {
-                                name: 'Sales 1',
-                                link: '/a'
-                            },
-                            {
-                                name: 'Sales 2',
-                                link: '/b'
-                            },
-                            {
-                                name: 'Sales 3',
-                                link: '/c'
-                            },
-                        ],
-                    },
+
 
                 ],
             },
@@ -153,16 +67,20 @@ export default function App(props) {
         );
     }
     const _tisdata = (event, element) => {
-        console.log('hi', element);
-        if (element.Link == "" || element.Link == undefined) {
+        if (element.Link === "" || element.Link === undefined) {
             // console.log(" element.Link empty");
         } else {
-            dispatch({ type: 'NUMBER_Change', payload: Math.floor(Math.random() * (1000 - 100 + 1)) + 100 })
+            dispatch({ type: 'NUMBER_Change', payload: Math.floor(Math.random() * (1000 - 100 + 1)) + 100, breadCrumbs: element.Link.slice(1) })
         }
     }
     return (
         <div className={drawerClasses}>
-            {leftMenu()}
+            <div className="side-drawer-logo">
+                <a href="/"><img src={logo} alt="logo" /></a>
+            </div>
+            <div class="side-drawer-menu">
+                {leftMenu()}
+            </div>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navbar from './Sidebar/Navbar'
+import Navbar from './Sidebar/navBar'
 function App() {
   return (
     <div className="App">
