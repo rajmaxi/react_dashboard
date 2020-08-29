@@ -8,14 +8,16 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Topbar from '../../header/Topbar';
 import SideDrawer from '../sideDrawer';
 import Backdrop from '../backDrop';
+import EditProduct from '../../pages/Product/EditProduct';
 import './style.css';
 import 'office-ui-fabric-react/dist/css/fabric.css';
+import history from '../../pages/History/history';
 import {
   initializeIcons
 } from "office-ui-fabric-react";
 import { useSelector } from 'react-redux';
 initializeIcons();
-export default function App() {
+export default function Navbar() {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const cartitems = useSelector(state => state.log.isLoading);
   useEffect(() => {
@@ -40,11 +42,11 @@ export default function App() {
     backdrop = <Backdrop clicking={backDropClickHandler} />
   }
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <div className="ms-Grid" dir="ltr">
           <div className="ms-Grid-row">
-            {/* drawerOpen and close */}
+           
             {
               (sideDrawerOpen) ? (<>
                 <SideDrawer show={sideDrawerOpen} />
@@ -76,6 +78,9 @@ export default function App() {
                   </Route>
                   <Route path='/attributesgroup'>
                     <Dashboard />
+                  </Route>
+                  <Route path='/editproduct'>
+                    <EditProduct />
                   </Route>
                 </Switch>
               </div>

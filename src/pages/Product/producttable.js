@@ -5,6 +5,10 @@ import 'office-ui-fabric-react/dist/css/fabric.css';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Card } from '@uifabric/react-cards';
+import history from '../../pages/History/history';
+import { Link, Route } from 'react-router-dom';
+
 
 import './style.css';
 
@@ -127,28 +131,42 @@ const finalChange = () => {
     console.log(products);
 }
 
+const _editProductPage = (test) => {
+
+}
+
 const ProductsTable = () => {
     return (
         <div>
             <div data-is-scrollable={true}>
                 {products.map((element, index) => (
                     <div class="ms-Grid" dir="ltr">
-                        <div class="ms-Grid-row">
-                            <div class="ms-Grid-col ms-lg1">
-                                <Checkbox label='' defaultChecked={element.isChecked} onChange={(e) => _checkClick(e, element, index)} />
+                        <Card className="cardStyles">
+                            <div class="ms-Grid-row">
+                                <div class="ms-Grid-col ms-lg1">
+                                    <Checkbox label='' defaultChecked={element.isChecked} onChange={(e) => _checkClick(e, element, index)} />
+                                </div>
+                                <div class="ms-Grid-col ms-lg1">
+                                    <img src={element.Image} alt="demo" className='pro_img' />
+                                </div>
+                                <div class="ms-Grid-col ms-lg2">{element.PName}</div>
+                                <div class="ms-Grid-col ms-lg2">{element.Model}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.Price}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.Quantity}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.Status}</div>
+                                <div class="ms-Grid-col ms-lg1">MODIFY</div>
+                                <div class="ms-Grid-col ms-lg1">{element.Status}</div>
+                                <div class="ms-Grid-col ms-lg1">
+                                    <div>
+                                        {/* <Link to='/editproduct'></Link> */}
+                                        <Link to={{
+                                            pathname: '/editproduct',
+                                            state: {id:element.proID}
+                                        }}><FontIcon iconName="Edit" className={edit_icon} /></Link>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ms-Grid-col ms-lg1">
-                                <img src={element.Image} alt="demo" className='pro_img' />
-                            </div>
-                            <div class="ms-Grid-col ms-lg2">{element.PName}</div>
-                            <div class="ms-Grid-col ms-lg2">{element.Model}</div>
-                            <div class="ms-Grid-col ms-lg1">{element.Price}</div>
-                            <div class="ms-Grid-col ms-lg1">{element.Quantity}</div>
-                            <div class="ms-Grid-col ms-lg1">{element.Status}</div>
-                            <div class="ms-Grid-col ms-lg1">MODIFY</div>
-                            <div class="ms-Grid-col ms-lg1">{element.Status}</div>
-                            <div class="ms-Grid-col ms-lg1"><FontIcon iconName="Edit" className={edit_icon} /></div>
-                        </div>
+                        </Card>
                     </div>
 
                 ))}
@@ -158,9 +176,9 @@ const ProductsTable = () => {
           selectionMode={0}
         /> */}
             </div>
-            <div onClick={finalChange}>
+            {/* <div onClick={finalChange}>
                 final
-            </div>
+            </div> */}
         </div>
     );
 };
