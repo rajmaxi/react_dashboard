@@ -31,6 +31,11 @@ const edit_icon = mergeStyles({
     margin: 'auto',
     cursor: 'pointer'
 });
+
+const productHead = [
+    {'checkbox' : <Checkbox label="" />,'name' : 'Image','pname' : 'Product Name ','modelname' : 'Model','pricename' : 'Price','quantityname':'Quantity','stockname':'Stockstatus','quantitymodifyname':'Quantity Modify time','statusname': 'Status','actionname':'Action','feedname':'Enablefeed'}
+]
+
 const products = [
     {
         proID: 1,
@@ -40,6 +45,7 @@ const products = [
         Model: 'pstest(64GB-black)',
         Price: 20000.0000,
         Quantity: 1,
+        Stockstatus : 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -53,6 +59,7 @@ const products = [
         Model: 'Apple Airpods Pro',
         Price: 25900.00,
         Quantity: 1,
+        Stockstatus : 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -66,6 +73,7 @@ const products = [
         Model: 'pstest(64GB-black)',
         Price: 20000.00,
         Quantity: 1,
+        Stockstatus : 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -79,6 +87,7 @@ const products = [
         Model: ' HomePod ',
         Price: 18900.00,
         Quantity: 1,
+        Stockstatus : 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -92,6 +101,7 @@ const products = [
         Model: ' iPad Mini WiFi - 64GB ',
         Price: 34900.00,
         Quantity: 1,
+        Stockstatus : 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -110,26 +120,29 @@ const columns = [
     { key: 'column8', name: 'Action', fieldName: 'Action', minWidth: 100, maxWidth: 300, isResizable: true },
     { key: 'column9', name: 'EnableFeed', fieldName: 'EnableFeed', minWidth: 100, maxWidth: 300, isResizable: true },
 ]
+
+
+
+
+
 const _checkClick = (e, prams, index) => {
-
-
-    // console.log(prams);
-    // e.preventdefault();
+    var emptyarray = [];
     var finalFind = products.find(element => element.proID === prams.proID);
     if (finalFind.isChecked) {
         finalFind['isChecked'] = false;
-        console.log('if');
     } else {
         finalFind['isChecked'] = true;
-        console.log('else');
     }
-    // (!finalFind.isChecked) ? (finalFind.isChecked = fals) : (alert('hi'));
-    console.log(finalFind);
+    if (prams.isChecked) {
+       emptyarray.push(prams)
+    }
+}
 
-}
-const finalChange = () => {
-    console.log(products);
-}
+
+
+// const finalChange = () => {
+//     console.log(products);
+// }
 
 const _editProductPage = (test) => {
 
@@ -139,6 +152,25 @@ const ProductsTable = () => {
     return (
         <div>
             <div data-is-scrollable={true}>
+                {productHead.map((element, index) => (
+                    <div class="ms-Grid" dir="ltr">
+                        <Card className="cardStyles">
+                            <div class="ms-Grid-row">
+                                <div class="ms-Grid-col ms-lg1">{element.checkbox}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.name}</div>
+                                <div class="ms-Grid-col ms-lg2">{element.pname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.modelname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.pricename}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.quantityname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.stockname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.quantitymodifyname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.statusname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.actionname}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.feedname}</div>
+                            </div>
+                        </Card>
+                    </div>
+                ))}
                 {products.map((element, index) => (
                     <div class="ms-Grid" dir="ltr">
                         <Card className="cardStyles">
@@ -150,18 +182,19 @@ const ProductsTable = () => {
                                     <img src={element.Image} alt="demo" className='pro_img' />
                                 </div>
                                 <div class="ms-Grid-col ms-lg2">{element.PName}</div>
-                                <div class="ms-Grid-col ms-lg2">{element.Model}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.Model}</div>
                                 <div class="ms-Grid-col ms-lg1">{element.Price}</div>
                                 <div class="ms-Grid-col ms-lg1">{element.Quantity}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.Stockstatus}</div>
+                                <div class="ms-Grid-col ms-lg1">{element.modifydate}</div>
                                 <div class="ms-Grid-col ms-lg1">{element.Status}</div>
-                                <div class="ms-Grid-col ms-lg1">MODIFY</div>
                                 <div class="ms-Grid-col ms-lg1">{element.Status}</div>
                                 <div class="ms-Grid-col ms-lg1">
                                     <div>
                                         {/* <Link to='/editproduct'></Link> */}
                                         <Link to={{
                                             pathname: '/editproduct',
-                                            state: {id:element.proID}
+                                            state: { id: element.proID }
                                         }}><FontIcon iconName="Edit" className={edit_icon} /></Link>
                                     </div>
                                 </div>

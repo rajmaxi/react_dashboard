@@ -1,6 +1,5 @@
 import React from "react";
 import './Breadcrumbs.css';
-import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { IconButton } from 'office-ui-fabric-react';
@@ -9,7 +8,7 @@ import { useSelector } from "react-redux";
 initializeIcons();
 
 const plus = { iconName: 'CirclePlus' };
-const PageEdit = { iconName: 'PageEdit' };
+const Copy = { iconName: 'Copy' };
 const Delete = { iconName: 'Delete' };
 const Save = { iconName: 'Save' };
 // const bradcumbTitle = ['Dashboard','Categories','Products','Filters','Attributes','Attribute Groups']
@@ -36,7 +35,7 @@ function Breadwrp() {
         </div>
         <div className="bread-right">
           <IconButton iconProps={plus} className="prim" />
-          <IconButton iconProps={PageEdit} className="defa" />
+          <IconButton iconProps={Copy} className="defa" />
           <IconButton iconProps={Delete} className="dang" />
           <IconButton iconProps={Save} className="prim" />
         </div>
