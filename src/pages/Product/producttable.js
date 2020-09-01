@@ -1,26 +1,13 @@
-import React from 'react';
-import { DetailsList } from '@fluentui/react';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import React, { useState } from 'react';
 import 'office-ui-fabric-react/dist/css/fabric.css';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { Card } from '@uifabric/react-cards';
-import history from '../../pages/History/history';
 import { Link, Route } from 'react-router-dom';
-
-
 import './style.css';
 
-const classNames = mergeStyleSets({
-    table: {
-        verticalAlign: 'middle',
-        border: "1px solid #ddd",
-        borderRadius: '8px',
-        padding: '10px 0px',
-        margin: '25px auto'
-    }
-});
+
 const edit_icon = mergeStyles({
     padding: '13px 10px',
     fontSize: '12px',
@@ -33,19 +20,19 @@ const edit_icon = mergeStyles({
 });
 
 const productHead = [
-    {'checkbox' : <Checkbox label="" />,'name' : 'Image','pname' : 'Product Name ','modelname' : 'Model','pricename' : 'Price','quantityname':'Quantity','stockname':'Stockstatus','quantitymodifyname':'Quantity Modify time','statusname': 'Status','actionname':'Action','feedname':'Enablefeed'}
+    { 'proID': 1, 'isChecked': false, 'checkbox': <Checkbox label="" defaultChecked />, 'name': 'Image', 'pname': 'Product Name ', 'modelname': 'Model', 'pricename': 'Price', 'quantityname': 'Quantity', 'stockname': 'Stockstatus', 'quantitymodifyname': 'Quantity Modify time', 'statusname': 'Status', 'actionname': 'Action', 'feedname': 'Enablefeed' }
 ]
 
 const products = [
     {
         proID: 1,
-        check: <Checkbox label="" onChange={_onChange} />,
+        check: <Checkbox label="" />,
         Image: "https://s1.poorvikamobile.com/image/data/AAAAA/vivo/Vivo X50 Pro/Alpha Grey/New/vivo-x50-pro-alpha-grey-128gb-8gb-ram-back_ios.jpeg",
         PName: 'pstest(64GB-black)',
         Model: 'pstest(64GB-black)',
         Price: 20000.0000,
         Quantity: 1,
-        Stockstatus : 'In Stock',
+        Stockstatus: 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -59,7 +46,7 @@ const products = [
         Model: 'Apple Airpods Pro',
         Price: 25900.00,
         Quantity: 1,
-        Stockstatus : 'In Stock',
+        Stockstatus: 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -73,7 +60,7 @@ const products = [
         Model: 'pstest(64GB-black)',
         Price: 20000.00,
         Quantity: 1,
-        Stockstatus : 'In Stock',
+        Stockstatus: 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -87,7 +74,7 @@ const products = [
         Model: ' HomePod ',
         Price: 18900.00,
         Quantity: 1,
-        Stockstatus : 'In Stock',
+        Stockstatus: 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -101,7 +88,7 @@ const products = [
         Model: ' iPad Mini WiFi - 64GB ',
         Price: 34900.00,
         Quantity: 1,
-        Stockstatus : 'In Stock',
+        Stockstatus: 'In Stock',
         Status: 'Enabled',
         Action: <FontIcon iconName="Edit" className={edit_icon} />,
         EnableFeed: <Checkbox label="" defaultChecked />,
@@ -109,46 +96,49 @@ const products = [
     }
 ]
 
-const columns = [
-    { key: 'column1', name: <Checkbox label="" className='myCheckbx' />, fieldName: 'check', minWidth: 80, maxWidth: 80, fontSize: 16, isResizable: true },
-    { key: 'column2', name: 'Image', fieldName: 'Image', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column3', name: 'Product Name', fieldName: 'PName', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column4', name: 'Model', fieldName: 'Model', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column5', name: 'Price', fieldName: 'Price', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column6', name: 'Quantity', fieldName: 'Quantity', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column7', name: 'Status', fieldName: 'Status', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column8', name: 'Action', fieldName: 'Action', minWidth: 100, maxWidth: 300, isResizable: true },
-    { key: 'column9', name: 'EnableFeed', fieldName: 'EnableFeed', minWidth: 100, maxWidth: 300, isResizable: true },
-]
-
-
-
-
-
-const _checkClick = (e, prams, index) => {
-    var emptyarray = [];
-    var finalFind = products.find(element => element.proID === prams.proID);
-    if (finalFind.isChecked) {
-        finalFind['isChecked'] = false;
-    } else {
-        finalFind['isChecked'] = true;
-    }
-    if (prams.isChecked) {
-       emptyarray.push(prams)
-    }
-}
-
-
-
-// const finalChange = () => {
-//     console.log(products);
-// }
-
-const _editProductPage = (test) => {
-
-}
-
 const ProductsTable = () => {
+
+    const [allCheck, setAllCheck] = useState(false)
+
+    const _checkClick = (e, parms, index) => {
+        var emptyarray = [];
+        var finalFind = products.find(element => element.proID === parms.proID);
+        console.log('dsfdfsdsf',finalFind)
+        if (finalFind.isChecked) {
+            finalFind['isChecked'] = false;
+        } else {
+            finalFind['isChecked'] = true;
+        }
+        if (parms.isChecked) {
+            emptyarray.push(parms)
+        }
+    }
+
+    const _checkboxAllclick = (e, item, index) => {
+
+        if (allCheck) {
+            products.forEach(element => {
+               element['isChecked']= false;
+               console.log('if',element)
+               setAllCheck(false)
+            });
+           
+        } else {
+            products.forEach(element => {
+                //console.log('else',element)
+                element['isChecked']= true;
+                console.log('else',element)
+                setAllCheck(true);
+            });
+           
+        }
+
+    }
+
+    const finalChange = () => {
+        console.log('dfsdfsds',products)
+    }
+
     return (
         <div>
             <div data-is-scrollable={true}>
@@ -156,7 +146,7 @@ const ProductsTable = () => {
                     <div class="ms-Grid" dir="ltr">
                         <Card className="cardStyles">
                             <div class="ms-Grid-row">
-                                <div class="ms-Grid-col ms-lg1">{element.checkbox}</div>
+                                <div class="ms-Grid-col ms-lg1"><Checkbox label='' defaultChecked={element.isChecked} onChange={(e) => _checkboxAllclick(e, element, index)} /></div>
                                 <div class="ms-Grid-col ms-lg1">{element.name}</div>
                                 <div class="ms-Grid-col ms-lg2">{element.pname}</div>
                                 <div class="ms-Grid-col ms-lg1">{element.modelname}</div>
@@ -191,7 +181,6 @@ const ProductsTable = () => {
                                 <div class="ms-Grid-col ms-lg1">{element.Status}</div>
                                 <div class="ms-Grid-col ms-lg1">
                                     <div>
-                                        {/* <Link to='/editproduct'></Link> */}
                                         <Link to={{
                                             pathname: '/editproduct',
                                             state: { id: element.proID }
@@ -203,11 +192,6 @@ const ProductsTable = () => {
                     </div>
 
                 ))}
-                {/* <DetailsList 
-          items={products}
-          columns={columns}
-          selectionMode={0}
-        /> */}
             </div>
             {/* <div onClick={finalChange}>
                 final
@@ -215,7 +199,5 @@ const ProductsTable = () => {
         </div>
     );
 };
-function _onChange(ev, isChecked) {
-    console.log(`The option has been changed to ${isChecked}.`);
-}
+
 export default ProductsTable;

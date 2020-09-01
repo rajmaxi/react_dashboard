@@ -11,9 +11,6 @@ const plus = { iconName: 'CirclePlus' };
 const Copy = { iconName: 'Copy' };
 const Delete = { iconName: 'Delete' };
 const Save = { iconName: 'Save' };
-// const bradcumbTitle = ['Dashboard','Categories','Products','Filters','Attributes','Attribute Groups']
-
-
 
 function Breadwrp() {
   const breadcrumb = useSelector(state => state.log.breadCrumb);
@@ -43,6 +40,8 @@ function Breadwrp() {
     </div>
   )
 }
+
+
 
 export default Breadwrp
 

@@ -10,7 +10,7 @@ import Breadcrumbs from '../../Breadcrumbs';
 function ProdutBody() {
     return (
         <div>
-            <Breadcrumbs />
+            <Breadcrumbs  />
             <div className="setadd">
                 <div className="sethead">
                     <h4>Set additional options for products</h4>
