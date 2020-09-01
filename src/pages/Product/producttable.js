@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import 'office-ui-fabric-react/dist/css/fabric.css';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
@@ -98,7 +98,11 @@ const products = [
 
 const ProductsTable = () => {
 
-    const [allCheck, setAllCheck] = useState(false)
+    const [allCheck, setAllCheck] = useState(false);
+
+    useEffect(() => {
+        setAllCheck(true);
+      }, []);
 
     const _checkClick = (e, parms, index) => {
         var emptyarray = [];
@@ -178,7 +182,6 @@ const ProductsTable = () => {
                                 <div class="ms-Grid-col ms-lg1">{element.Stockstatus}</div>
                                 <div class="ms-Grid-col ms-lg1">{element.modifydate}</div>
                                 <div class="ms-Grid-col ms-lg1">{element.Status}</div>
-                                <div class="ms-Grid-col ms-lg1">{element.Status}</div>
                                 <div class="ms-Grid-col ms-lg1">
                                     <div>
                                         <Link to={{
@@ -187,6 +190,7 @@ const ProductsTable = () => {
                                         }}><FontIcon iconName="Edit" className={edit_icon} /></Link>
                                     </div>
                                 </div>
+                                <div class="ms-Grid-col ms-lg1">{element.EnableFeed}</div>
                             </div>
                         </Card>
                     </div>
