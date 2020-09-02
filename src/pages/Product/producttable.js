@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'office-ui-fabric-react/dist/css/fabric.css';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
@@ -23,7 +23,7 @@ const productHead = [
     { 'proID': 1, 'isChecked': false, 'checkbox': <Checkbox label="" defaultChecked />, 'name': 'Image', 'pname': 'Product Name ', 'modelname': 'Model', 'pricename': 'Price', 'quantityname': 'Quantity', 'stockname': 'Stockstatus', 'quantitymodifyname': 'Quantity Modify time', 'statusname': 'Status', 'actionname': 'Action', 'feedname': 'Enablefeed' }
 ]
 
-const products = [
+const product = [
     {
         proID: 1,
         check: <Checkbox label="" />,
@@ -97,52 +97,48 @@ const products = [
 ]
 
 const ProductsTable = () => {
-
     const [allCheck, setAllCheck] = useState(false);
-
+    const [products, setproduct] = useState(product)
     useEffect(() => {
-        setAllCheck(true);
-      }, []);
+
+    }, []);
 
     const _checkClick = (e, parms, index) => {
-        var emptyarray = [];
-        var finalFind = products.find(element => element.proID === parms.proID);
-        console.log('dsfdfsdsf',finalFind)
-        if (finalFind.isChecked) {
-            finalFind['isChecked'] = false;
-        } else {
-            finalFind['isChecked'] = true;
-        }
-        if (parms.isChecked) {
-            emptyarray.push(parms)
-        }
+        var newArray = [...products];
+        // var elementsIndex = newArray.findIndex(function (element) {
+        //     return element.proID == parms.proID
+        // });
+        var elementsIndex = products.findIndex(element => element.proID === parms.proID);
+        newArray[elementsIndex] = { ...newArray[elementsIndex], isChecked: !newArray[elementsIndex].isChecked }
+        setproduct(newArray);
     }
 
     const _checkboxAllclick = (e, item, index) => {
-
         if (allCheck) {
-            products.forEach(element => {
-               element['isChecked']= false;
-               console.log('if',element)
-               setAllCheck(false)
-            });
-           
-        } else {
-            products.forEach(element => {
-                //console.log('else',element)
-                element['isChecked']= true;
-                console.log('else',element)
-                setAllCheck(true);
-            });
-           
-        }
+            //console.log('if');
+            var checkTrue = products.map((element, i) => {
+                element.isChecked = false
+                return element
+            });  
+            console.log('rertr',checkTrue)
 
+            setproduct(checkTrue);
+            setAllCheck(false);
+        } else {
+            //console.log('else');
+            let checkTrue = products.map((element, i) => {
+                element.isChecked = true
+                return element
+            });
+            setproduct(checkTrue);
+            setAllCheck(true);
+        }
     }
 
     const finalChange = () => {
-        console.log('dfsdfsds',products)
+        console.log('dfsdfsds', products)
     }
-
+    // console.log('products :::m ', products)
     return (
         <div>
             <div data-is-scrollable={true}>
@@ -170,7 +166,7 @@ const ProductsTable = () => {
                         <Card className="cardStyles">
                             <div class="ms-Grid-row">
                                 <div class="ms-Grid-col ms-lg1">
-                                    <Checkbox label='' defaultChecked={element.isChecked} onChange={(e) => _checkClick(e, element, index)} />
+                                    <Checkbox label='' checked={element.isChecked} onChange={(e) => _checkClick(e, element, index)} />
                                 </div>
                                 <div class="ms-Grid-col ms-lg1">
                                     <img src={element.Image} alt="demo" className='pro_img' />
@@ -197,9 +193,9 @@ const ProductsTable = () => {
 
                 ))}
             </div>
-            {/* <div onClick={finalChange}>
+            <div onClick={finalChange}>
                 final
-            </div> */}
+            </div>
         </div>
     );
 };

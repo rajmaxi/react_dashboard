@@ -6,11 +6,19 @@ import GeneralDesc from './Config_Products/General';
 import ProductLinks from './Config_Products/Links';
 import Breadcrumbs from '../../Breadcrumbs';
 
+
 const ProWrap = {
   margin:'40px auto'
 };
 
- const EditProduct = () => (
+ const EditProduct = (props) => {
+  
+
+  
+  console.log('dffgdf',props.location.state);
+
+
+  return(
   <div>
     <Breadcrumbs />
   <div className="ms-Grid" dir="ltr" >
@@ -72,6 +80,6 @@ const ProWrap = {
     </div>
   </div>
   </div>
-
-);
+  )
+ };
 export default EditProduct
