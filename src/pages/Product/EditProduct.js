@@ -5,6 +5,7 @@ import DataProduct from './Config_Products/Data'
 import GeneralDesc from './Config_Products/General';
 import ProductLinks from './Config_Products/Links';
 import Breadcrumbs from '../../Breadcrumbs';
+import { useLocation } from 'react-router-dom';
 
 
 const ProWrap = {
@@ -12,11 +13,11 @@ const ProWrap = {
 };
 
  const EditProduct = (props) => {
-  
-
-  
-  console.log('dffgdf',props.location.state);
-
+  // console.log('editproductpage',props)
+  const location = useLocation();
+  useEffect(()=> {
+    console.log('editproductpage',location.state)
+  },[])
 
   return(
   <div>

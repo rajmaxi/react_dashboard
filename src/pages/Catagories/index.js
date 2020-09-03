@@ -1,10 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Breadcrumbs from '../../Breadcrumbs';
 import Categoriestable from './Categoriestable';
 import { IconButton } from 'office-ui-fabric-react';
 import { initializeIcons } from "office-ui-fabric-react"
+import {useParams} from 'react-router-dom';
 
-function Catalogbody() {
+function Catalogbody(props) {
+    
+    const { name } = useParams()
+
+    useEffect (()=>{
+        console.log('testsette',name);
+    })
     initializeIcons();
     const categoryIcon = () => {
         return(

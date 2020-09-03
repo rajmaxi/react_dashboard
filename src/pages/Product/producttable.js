@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import 'office-ui-fabric-react/dist/css/fabric.css';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
@@ -6,7 +6,7 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { Card } from '@uifabric/react-cards';
 import { Link, Route } from 'react-router-dom';
 import './style.css';
-
+import { useHistory } from "react-router-dom";
 
 const edit_icon = mergeStyles({
     padding: '13px 10px',
@@ -97,19 +97,21 @@ const product = [
 ]
 
 const ProductsTable = () => {
+    const history = useHistory();
     const [allCheck, setAllCheck] = useState(false);
     const [products, setproduct] = useState(product)
     useEffect(() => {
 
     }, []);
 
-    const _checkClick = (e, parms, index) => {
+    const _checkClick = (e, parms, elementsIndex) => {
         var newArray = [...products];
         // var elementsIndex = newArray.findIndex(function (element) {
         //     return element.proID == parms.proID
         // });
-        var elementsIndex = products.findIndex(element => element.proID === parms.proID);
+        // var elementsIndex = products.findIndex(element => element.proID === parms.proID);
         newArray[elementsIndex] = { ...newArray[elementsIndex], isChecked: !newArray[elementsIndex].isChecked }
+        console.log('sfdfdsdf', newArray[elementsIndex])
         setproduct(newArray);
     }
 
@@ -119,8 +121,8 @@ const ProductsTable = () => {
             var checkTrue = products.map((element, i) => {
                 element.isChecked = false
                 return element
-            });  
-            console.log('rertr',checkTrue)
+            });
+            console.log('rertr', checkTrue)
 
             setproduct(checkTrue);
             setAllCheck(false);
@@ -137,6 +139,9 @@ const ProductsTable = () => {
 
     const finalChange = () => {
         console.log('dfsdfsds', products)
+    }
+    const _editPage = () => {
+        history.push({ pathname: '/editproduct', state: { detail: 'test' } });
     }
     // console.log('products :::m ', products)
     return (
@@ -180,10 +185,11 @@ const ProductsTable = () => {
                                 <div class="ms-Grid-col ms-lg1">{element.Status}</div>
                                 <div class="ms-Grid-col ms-lg1">
                                     <div>
-                                        <Link to={{
+                                        {/* <Link to={{
                                             pathname: '/editproduct',
                                             state: { id: element.proID }
-                                        }}><FontIcon iconName="Edit" className={edit_icon} /></Link>
+                                        }}><FontIcon iconName="Edit" className={edit_icon} /></Link> */}
+                                        <FontIcon iconName="Edit" className={edit_icon} onClick={_editPage} />
                                     </div>
                                 </div>
                                 <div class="ms-Grid-col ms-lg1">{element.EnableFeed}</div>

@@ -9,6 +9,7 @@ import 'office-ui-fabric-react/dist/css/fabric.css';
 
 
 export default function App(props) {
+    console.log('routing',props)
     initializeIcons();
     const dispatch = useDispatch();
 
@@ -24,13 +25,13 @@ export default function App(props) {
         const navLinkGroups = [
             {
                 links: [
-                    // {
-                    //     name: <Link to="/">Dashboard</Link>,
-                    //     Link: '/',
-                    //     icon: 'ViewDashboard',
-                    // },
                     {
-                        name: <Link to="/categories">Categories</Link>,
+                        name: <Link to="/">Dashboard</Link>,
+                        Link: '/dashboard',
+                        icon: 'ViewDashboard',
+                    },
+                    {
+                        name: <Link to={`/categories/${props.name}`}>Categories</Link>,
                         Link: '/categories',
                         icon: 'ProductCatalog',
                     },

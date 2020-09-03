@@ -20,6 +20,7 @@ initializeIcons();
 export default function Navbar() {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const cartitems = useSelector(state => state.log.isLoading);
+  const name = 'John Doe'
   useEffect(() => {
     _closeToggle();
   }, [cartitems])
@@ -49,7 +50,7 @@ export default function Navbar() {
            
             {
               (sideDrawerOpen) ? (<>
-                <SideDrawer show={sideDrawerOpen} />
+                <SideDrawer show={sideDrawerOpen} name={name}/>
               </>) : null
             }
             <div className="ms-Grid-col ms-md12 m13">
@@ -61,25 +62,25 @@ export default function Navbar() {
               {/* pageNavigation */}
               <div className="rightwrp">
                 <Switch>
-                  {/* <Route path='/'>  
+                  <Route path='/' exact component={Dashboard}>  
                     <Dashboard />
-                  </Route> */}
-                  <Route path='/categories'>
-                    <Catagories />
                   </Route>
-                  <Route path='/products'>
+                  <Route path='/categories/:name' component={Catagories}>
+                    <Catagories/>
+                  </Route>
+                  <Route path='/products' component={Product}>
                     <Product />
                   </Route>
-                  <Route path='/filters'>
+                  <Route path='/filters' component={Filters}>
                     <Filters />
                   </Route>
-                  <Route path='/attributes'>
+                  <Route path='/attributes' component={Extension}>
                     <Extension />
                   </Route>
-                  <Route path='/attributesgroup'>
+                  <Route path='/attributesgroup' component={Dashboard}>
                     <Dashboard />
                   </Route>
-                  <Route path='/editproduct'>
+                  <Route path='/editproduct' component={EditProduct}>
                     <EditProduct />
                   </Route>
                 </Switch>
